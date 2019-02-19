@@ -17,17 +17,11 @@ enum custom_keycodes {
 };
 
 #define KC_ KC_TRNS
-
-#define KC_CAPW LGUI(LSFT(KC_3))        // Capture whole screen
-#define KC_CPYW LGUI(LSFT(LCTL(KC_3)))  // Copy whole screen
-#define KC_CAPP LGUI(LSFT(KC_4))        // Capture portion of screen
-#define KC_CPYP LGUI(LSFT(LCTL(KC_4)))  // Copy portion of screen
 #define KC_ESCC MT(MOD_LCTL, KC_ESC)
 #define KC_LOWR LOWER
 #define KC_RASE RAISE
-#define KC_RST RESET
-#define KC_BL_S BL_STEP
-#define KC_ENTS MT(MOD_LSFT, KC_ENT)
+#define KC_GBSP LGUI_T(KC_BSPC)
+#define KC_GDEL LGUI_T(KC_DEL)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -37,45 +31,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
      TAB , Q  , W  , E  , R  , T  ,                Y  , U  , I  , O  , P  ,QUOT,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-     ESCC, A  , S  , D  , F  , G  ,                H  , J  , K  , L  ,SCLN,ENTS,
+     ESCC, A  , S  , D  , F  , G  ,                H  , J  , K  , L  ,SCLN,ENT ,
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-     LSFT, Z  , X  , C  , V  , B  ,SPC ,     LCTL, N  , M  ,COMM,DOT ,SLSH,ENTS,
+     LSFT, Z  , X  , C  , V  , B  ,GBSP,     SPC , N  , M  ,COMM,DOT ,SLSH,RSFT,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
-                       LGUI,LOWR,SPC ,         BSPC,RASE,LALT
+                       LALT,LOWR, GBSP,        SPC ,RASE,LOWR 
   //                  `----+----+----'        `----+----+----'
   ),
 
   [_LOWER] = LAYOUT_kc(
   //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
-     TILD,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,LPRN,RPRN,BSPC,
+     TILD,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,LPRN,RPRN,MUTE,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-     RST , 1  , 2  , 3  , 4  , 5  ,                6  , 7  , 8  , 9  , 0  ,    ,
+         ,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,VOLU,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-     DEL ,CAPP,LEFT,RGHT, UP ,LBRC,               RBRC, P4 , P5 , P6 ,PLUS,PIPE,
+         ,    ,    ,    ,    ,    ,               LEFT,DOWN, UP ,RGHT ,   ,VOLD,
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-     BL_S,CPYP,    ,    ,DOWN,LCBR,LPRN,     RPRN,RCBR, P1 , P2 , P3 ,MINS,    ,
-  //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
-                           ,    ,DEL ,         DEL ,    , P0
+         ,    ,    ,    ,    ,    ,    ,         ,    ,    ,    ,    ,    ,    ,
+  //`----+----+----+----+----+----+----/    \----+----+----+----+----+----+----'
+                           ,    ,     ,            ,    , 
   //                  `----+----+----'        `----+----+----'
   ),
-
+  
   [_RAISE] = LAYOUT_kc(
   //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
-     F12 , F1 , F2 , F3 , F4 , F5 ,                F6 , F7 , F8 , F9 ,F10 ,F11 ,
+      F1 , F2 , F3 , F4 , F5 , F6 ,                F7 , F8 , F9 ,F10 ,F11 , F12,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-         ,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,LPRN,RPRN,    ,
+         ,    ,    ,    ,    ,LPRN,               RPRN, P7 , P8 , P9  ,    ,    ,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-     DEL ,MPRV,MNXT,VOLU,PGUP,UNDS,               EQL ,HOME,    ,    ,    ,BSLS,
+         ,    ,    ,    ,    ,LBRC,               RBRC, P4 , P5 , P6 ,    ,    ,
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-     MUTE,MSTP,MPLY,VOLD,PGDN,MINS,    ,         ,PLUS,END ,    ,    ,    ,    ,
+         ,    ,    ,    ,    ,LCBR,GDEL,         ,RCBR, P1 , P2 , P3 ,     ,   ,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
-                           ,    ,    ,             ,    ,
-  //                  `----+----+----'        `----+----+----'
+                           ,    ,GDEL,             ,    , P0
+  //                  `----+----+----'        `----+----+----'  
   ),
 
   [_ADJUST] = LAYOUT(
   //,--------+--------+--------+--------+--------+--------.                          ,--------+--------+--------+--------+--------+--------.
-      BL_ON  , BL_OFF , _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
+      BL_STEP, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                          |--------+--------+--------+--------+--------+--------|
       RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, _______,                            _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                          |--------+--------+--------+--------+--------+--------|
