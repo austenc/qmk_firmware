@@ -7,6 +7,7 @@ extern keymap_config_t keymap_config;
 #define _QWERTY 0
 #define _LOWER 1
 #define _RAISE 2
+#define _GAME 3
 #define _ADJUST 16
 
 enum custom_keycodes {
@@ -23,8 +24,10 @@ enum custom_keycodes {
 #define KC_RENT LT(_RAISE, KC_ENT)
 #define KC_RST RESET
 #define KC_DBG DEBUG
+#define KC_GSPC LGUI_T(KC_SPC)
 #define KC_GBSP LGUI_T(KC_BSPC)
 #define KC_GDEL LGUI_T(KC_DEL)
+#define KC_GAME TG(_GAME)
 
 // RGB Underglow and Key Backlight
 #define KC_RTOG RGB_TOG
@@ -53,17 +56,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                  `----+----+----'        `----+----+----'
   ),
 
+  [_GAME] = LAYOUT_kc(
+  // Same as QWERTY except these keys
+  //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
+         ,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,   ,
+  //|----+----+----+----+----+----|              |----+----+----+----+----+----|
+         ,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,    ,
+  //|----+----+----+----+----+----|              |----+----+----+----+----+----|
+         ,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,    ,
+  //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
+         ,    ,    ,    ,    ,    , SPC,     GSPC ,   ,    ,    ,    ,    ,    ,
+  //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
+                           ,    , SPC ,        GSPC ,   , 
+  //                  `----+----+----'        `----+----+----'
+  ),
+
   [_LOWER] = LAYOUT_kc(
   //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
      TILD,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,LPRN,RPRN, EQL,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,MUTE,
+         ,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,VOLU,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,               LEFT,DOWN, UP ,RGHT ,   ,VOLU,
+         ,    ,    ,    ,    ,    ,               LEFT,DOWN, UP ,RGHT ,   ,VOLD,
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,GDEL,      SPC,    ,    ,    ,    ,    ,VOLD,
+         ,    ,    ,    ,    ,    ,GDEL,      SPC,    ,    ,    ,    ,    ,MUTE,
   //`----+----+----+----+----+----+----/    \----+----+----+----+----+----+----'
-                           ,    ,GDEL,          SPC,    , 
+                           ,    ,GDEL,          SPC,RENT, 
   //                  `----+----+----'        `----+----+----'
   ),
   
@@ -83,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_ADJUST] = LAYOUT_kc(
   //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
-     LITE,    ,    ,    ,    , RST,                DBG,    ,    ,    ,    ,    ,
+     LITE,    ,    ,    ,    , RST,                DBG,    ,    ,    ,    ,GAME,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
      RTOG,RMOD,RHUI,RSAI,RVAI,    ,                   ,    ,    ,    ,    ,    ,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
