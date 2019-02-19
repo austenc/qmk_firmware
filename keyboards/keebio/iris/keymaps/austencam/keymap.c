@@ -15,6 +15,8 @@ enum custom_keycodes {
   LOWER,
   RAISE,
   ADJUST,
+  EQL_ARROW,
+  DASH_ARROW
 };
 
 // Shortcuts and some mod tap keys
@@ -29,6 +31,8 @@ enum custom_keycodes {
 #define KC_GBSP LGUI_T(KC_BSPC)
 #define KC_GDEL LGUI_T(KC_DEL)
 #define KC_GAME TG(_GAME)
+#define KC_EARR EQL_ARROW
+#define KC_DARR DASH_ARROW
 
 // RGB Underglow and Key Backlight
 #define KC_RTOG RGB_TOG
@@ -60,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_GAME] = LAYOUT_kc(
   // Same as QWERTY except these keys
   //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
-         ,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,   ,
+         ,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,BSPC,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
          ,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,    ,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
@@ -68,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
          ,    ,    ,    ,    ,    , SPC,     GSPC ,   ,    ,    ,    ,    ,    ,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
-                           ,    , SPC ,        GSPC ,   , 
+                           ,    , SPC ,        GSPC ,   ,  
   //                  `----+----+----'        `----+----+----'
   ),
 
@@ -76,9 +80,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
      TILD,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,LPRN,RPRN, EQL,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,VOLU,
+         ,    ,    ,    ,    ,    ,               HOME,PGDN,PGUP,END ,    ,VOLU,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,               LEFT,DOWN, UP ,RGHT ,   ,VOLD,
+         ,    ,    ,DARR,EARR,    ,               LEFT,DOWN, UP ,RGHT ,   ,VOLD,
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
          ,    ,    ,    ,    ,    ,GDEL,      SPC,    ,    ,    ,    ,    ,MUTE,
   //`----+----+----+----+----+----+----/    \----+----+----+----+----+----+----'
@@ -155,6 +159,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_ADJUST);
       }
       return false;
+      break;
+    case EQL_ARROW:
+      if (record->event.pressed) {
+        SEND_STRING("=>");
+      }
+      break;
+    case DASH_ARROW:
+      if (record->event.pressed) {
+        SEND_STRING("->");
+      }
       break;
   }
   return true;
