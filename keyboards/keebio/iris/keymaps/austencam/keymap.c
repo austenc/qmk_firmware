@@ -21,6 +21,7 @@ enum custom_keycodes {
 #define KC_ KC_TRNS
 #define KC_ESCC MT(MOD_LCTL, KC_ESC)
 #define KC_LOWR LOWER
+#define KC_RASE RAISE
 #define KC_RENT LT(_RAISE, KC_ENT)
 #define KC_RST RESET
 #define KC_DBG DEBUG
@@ -81,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
          ,    ,    ,    ,    ,    ,GDEL,      SPC,    ,    ,    ,    ,    ,MUTE,
   //`----+----+----+----+----+----+----/    \----+----+----+----+----+----+----'
-                           ,    ,GDEL,          SPC,RENT, 
+                           ,    ,GDEL,          SPC,RASE, 
   //                  `----+----+----'        `----+----+----'
   ),
   
