@@ -24,11 +24,11 @@ enum custom_keycodes {
 #define KC_ESCC MT(MOD_LCTL, KC_ESC)
 #define KC_LOWR LOWER
 #define KC_RASE RAISE
+#define KC_LBSP LT(_LOWER, KC_BSPC)
 #define KC_RENT LT(_RAISE, KC_ENT)
 #define KC_RST RESET
 #define KC_DBG DEBUG
 #define KC_GSPC LGUI_T(KC_SPC)
-#define KC_GBSP LGUI_T(KC_BSPC)
 #define KC_GDEL LGUI_T(KC_DEL)
 #define KC_GAME TG(_GAME)
 #define KC_EARR EQL_ARROW
@@ -55,9 +55,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
      ESCC, A  , S  , D  , F  , G  ,                H  , J  , K  , L  ,SCLN,QUOT,
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-     LSPO, Z  , X  , C  , V  , B  ,GBSP,     SPC , N  , M  ,COMM,DOT ,SLSH,RSPC,
+     LSPO, Z  , X  , C  , V  , B  ,LGUI,     SPC , N  , M  ,COMM,DOT ,SLSH,RSPC,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
-                       LALT,LOWR, GBSP,        SPC ,RENT,LOWR 
+                       LALT,LBSP, LGUI,        SPC ,RENT,LOWR 
   //                  `----+----+----'        `----+----+----'
   ),
 
