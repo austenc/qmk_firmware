@@ -25,11 +25,11 @@ enum custom_keycodes {
 #define KC_LOWR LOWER
 #define KC_RASE RAISE
 #define KC_LBSP LT(_LOWER, KC_BSPC)
+#define KC_LDEL LT(_LOWER, KC_DEL)
 #define KC_RENT LT(_RAISE, KC_ENT)
 #define KC_RST RESET
 #define KC_DBG DEBUG
 #define KC_GSPC LGUI_T(KC_SPC)
-#define KC_GDEL LGUI_T(KC_DEL)
 #define KC_GAME TG(_GAME)
 #define KC_EARR EQL_ARROW
 #define KC_DARR DASH_ARROW
@@ -84,9 +84,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
          ,    ,    ,DARR,EARR,LBRC,               RBRC, P4 , P5 , P6 ,    ,VOLD,
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-         ,    ,    ,    ,    ,LCBR,GDEL,      SPC,RCBR, P1 , P2 , P3 , P0 ,MUTE,
+         ,    ,    ,    ,    ,LCBR,    ,      SPC,RCBR, P1 , P2 , P3 , P0 ,MUTE,
   //`----+----+----+----+----+----+----/    \----+----+----+----+----+----+----'
-                           ,    ,GDEL,          SPC,RASE, 
+                           ,    ,    ,          SPC,RASE, 
   //                  `----+----+----'        `----+----+----'
   ),
   
@@ -98,9 +98,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
          ,    ,    ,    ,    ,LBRC,               LEFT,DOWN, UP ,RGHT,    ,    ,
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-         ,    ,    ,    ,    ,LCBR,GDEL,     GSPC,    ,    ,    ,    ,     ,   ,
+         ,    ,    ,    ,    ,LCBR,    ,     GSPC,    ,    ,    ,    ,     ,   ,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
-                           ,    ,GDEL,         GSPC,    , 
+                           ,LDEL,    ,         GSPC,    , 
   //                  `----+----+----'        `----+----+----'  
   ),
 
