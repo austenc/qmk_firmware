@@ -8,6 +8,7 @@ extern keymap_config_t keymap_config;
 #define _LOWER 1
 #define _RAISE 2
 #define _GAME 3
+#define _DVORAK 4
 #define _ADJUST 16
 
 enum custom_keycodes {
@@ -22,6 +23,7 @@ enum custom_keycodes {
 // Shortcuts and some mod tap keys
 #define KC_ KC_TRNS
 #define KC_ESCC MT(MOD_LCTL, KC_ESC)
+#define KC_DVRK TG(_DVORAK)
 #define KC_LOWR LOWER
 #define KC_RASE RAISE
 #define KC_LBSP LT(_LOWER, KC_BSPC)
@@ -61,8 +63,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                  `----+----+----'        `----+----+----'
   ),
 
+  [_DVORAK] = LAYOUT_kc(
+  //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
+     GRV , 1  , 2  , 3  , 4  , 5  ,                6  , 7  , 8  , 9  , 0  ,MINS,
+  //|----+----+----+----+----+----|              |----+----+----+----+----+----|
+     TAB ,QUOT,COMM,DOT , P  , Y  ,                F  , G  , C  , R  , L  ,SLSH,
+  //|----+----+----+----+----+----|              |----+----+----+----+----+----|
+     ESCC, A  , O  , E  , U  , I  ,                D  , H  , T  , N  ,  S ,MINS,
+  //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
+     LSPO,SCLN, Q  , J  , K  , X  ,LGUI,     SPC , B  , M  ,  W  , V , Z  ,RSPC,
+  //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
+                       LALT,    , LGUI,        SPC ,    ,LOWR 
+  //                  `----+----+----'        `----+----+----'
+  ),
+
+
   [_GAME] = LAYOUT_kc(
-  // Same as QWERTY except these keys
+  // Same as QWERTY except these keym
   //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
      ESC ,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,BSPC,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
@@ -112,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
          ,    ,RHUD,RSAD,RVAD,    ,                   ,    ,    ,    ,    ,    ,
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,    ,         ,    ,    ,    ,    ,     ,   ,
+         ,    ,    ,    ,    ,    ,    ,         ,    ,    ,    ,    ,     ,DVRK,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
                            ,    ,    ,             ,    , 
   //                  `----+----+----'        `----+----+----'  
