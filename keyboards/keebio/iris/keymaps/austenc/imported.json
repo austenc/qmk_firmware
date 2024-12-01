@@ -1,0 +1,28 @@
+{
+    "keyboard": "keebio/iris/rev8",
+    "keymap": "austenc",
+    "layout": "LAYOUT_kc",
+    "layers": [
+        [
+            "GRV"  , "MINS" , "TAB"  , "Q"    , "W"    , "E"    ,                     "R"    , "T"    , "Y"    , "U"    , "I"    , "O"    , "P"    , "BSLS" ,
+            "ESCC" , "A"    , "S"    , "D"    , "F"    , "G"    ,                     "H"    , "J"    , "K"    , "L"    , "SCLN" , "QUOT" ,
+            "LSPO" , "Z"    , "X"    , "C"    , "V"    , "B"    , "LGUI" , "SPC"    , "N"    , "M"    , "COMM" , "DOT"  , "SLSH" , "RSPC" ,
+                                               "LALT" , "LBSP" , "LGUI" , "SPC"    , "RENT" , "LOWR"
+        ],
+        [
+            "ESC"  , "BSPC" , "LCTL" , "SPC"  , "GSPC" , "SPC"  ,                     "GSPC"
+        ],
+        [
+            "TILD" , "EXLM" , "AT"   , "HASH" , "DLR"  , "PERC" ,                     "CIRC" , "AMPR" , "ASTR" , "LPRN" , "RPRN" , "EQL"  ,
+            "JSFN" , "PHPF" , "LPRN" , "RPRN" , "P7"   , "P8"   ,                     "P9"   , "VOLU" , "CDIF" , "THIS" , "DARR" , "EARR" ,
+            "LBRC" , "RBRC" , "P4"   , "P5"   , "P6"   , "VOLD" ,                     "CSSC" , "LCBR" , "SPC"  , "RCBR" , "P1"   , "P2"   ,
+                                               "P3"    , "P0"   , "MUTE" , "SPC"    , "RASE"
+        ],
+        [
+            "F1"   , "F2"   , "F3"   , "F4"   , "F5"   , "F6"   ,                     "F7"   , "F8"   , "F9"   , "F10"  , "F11"  , "EQL"  ,
+            "LPRN" , "HOME" , "PGDN" , "PGUP" , "END"  , "F12"  ,                     "JSFN" , "PHPF" , "LBRC" , "LEFT" , "DOWN" , "UP"   ,
+            "RGHT" , "LCBR" , "GSPC" , "LDEL" , "GSPC" ,
+            "LITE" , "RST"  , "DBG"  , "GAME"   , "RTOG" , "RMOD" , "RHUI" , "RSAI" , "RVAI" , "RHUD" , "RSAD" , "RVAD"
+        ]
+    ]
+}
