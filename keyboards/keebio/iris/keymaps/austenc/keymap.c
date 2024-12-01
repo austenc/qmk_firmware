@@ -34,7 +34,8 @@ enum custom_keycodes {
   CSS_CLASS,
   PHP_FUNC,
   JS_FUNC,
-  CODE_IF
+  CODE_IF,
+  REFLASH,
 };
 
 // Shortcuts and some mod tap keys
@@ -54,6 +55,7 @@ enum custom_keycodes {
 #define KC_PHPF PHP_FUNC
 #define KC_JSFN JS_FUNC
 #define KC_CDIF CODE_IF
+#define KC_REFL REFLASH
 
 // Remap a few keys to be prefixed with KC_ so our layout / KC_ aliasing works
 #define KC_BOOT QK_BOOT
@@ -134,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_ADJUST] = LAYOUT_kc(
   //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
-     LITE,    ,    ,    ,    ,  ,                 BOOT,    ,    ,    ,    ,GAME,
+     LITE,    ,    ,    ,    ,REFL,                   ,    ,    ,    ,    ,GAME,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
      RTOG,RMOD,RHUI,RSAI,RVAI,    ,                   ,    ,    ,    ,    ,    ,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
@@ -177,6 +179,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
+
+    // Web Dev Shortcuts
     case EQL_ARROW:
       if (record->event.pressed) {
         SEND_STRING("=>");
@@ -210,6 +214,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case CODE_IF:
       if (record->event.pressed) {
         SEND_STRING("if () {}"SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT));
+      }
+      break;
+    case REFLASH:
+      if (record->event.pressed) {
+        // First we want to send the command to compile qmk firmware
+        SEND_STRING(SS_LALT("`")" qmk compile -kb keebio/iris/rev8 -km austenc && qmk flash -kb keebio/iris/rev8 -km austenc\n");
+        // Add a delay before resetting
+        wait_ms(500);
+        reset_keyboard();  // More reliable than tap_code16(QK_BOOT)
       }
       break;
   }
